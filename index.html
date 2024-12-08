@@ -43,6 +43,15 @@
             width: 250px;
             height: 25px;
         }
+        .input-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1100;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +64,13 @@
         <div id="final-matrix" class="matrix"></div>
     </div>
     <img src="nurismap.png" class="photo" alt="Photo">
+    <div class="input-container">
+        <label for="lat">Latitude: </label>
+        <input type="text" id="lat" value="52.0000">
+        <label for="lng">Longitude: </label>
+        <input type="text" id="lng" value="63.0000">
+        <button onclick="setInitialCoordinates()">Set Coordinates</button>
+    </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3gzo6yiL6osEkR-GDDA3DjA9D7qKqI4o&callback=initMap&libraries=drawing,geometry" async defer></script>
     <script>
         let map;
@@ -75,19 +91,28 @@
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 15,
-                center: { lat: 37.7749, lng: -122.4194 },
+                center: { lat: 52.0000, lng: 63.0000 },
                 mapTypeId: 'satellite'
             });
 
+            setInitialCoordinates();
+        }
+
+        function setInitialCoordinates() {
+            const lat = parseFloat(document.getElementById('lat').value);
+            const lng = parseFloat(document.getElementById('lng').value);
+
+            map.setCenter({ lat: lat, lng: lng });
+
             const fireCoords = [
-                { lat: 37.7749, lng: -122.4194 },
-                { lat: 37.7759, lng: -122.4144 },
-                { lat: 37.7730, lng: -122.4100 },
-                { lat: 37.7715, lng: -122.4150 }
+                { lat: lat, lng: lng },
+                { lat: lat + 0.0100, lng: lng + 0.0050 },
+                { lat: lat - 0.0050, lng: lng + 0.0100 },
+                { lat: lat - 0.0100, lng: lng + 0.0050 }
             ];
 
-            currentCoords.push(...fireCoords);
-            displayMatrix(currentCoords, 'initial-matrix');
+            currentCoords = fireCoords;
+            displayMatrix(fireCoords, 'initial-matrix');
 
             firePolygon = new google.maps.Polygon({
                 paths: currentCoords,
