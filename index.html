@@ -11,8 +11,8 @@
         }
         #canvas {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 150px; /* Переместить ниже, чем Set Coordinates */
+            left: 10px; /* Смещение от левого края */
             z-index: 1000;
             width: 30%;
             height: 30%;
@@ -56,6 +56,13 @@
 </head>
 <body>
     <div id="map"></div>
+    <div class="input-container">
+        <label for="lat">Latitude: </label>
+        <input type="text" id="lat" value="52.0000">
+        <label for="lng">Longitude: </label>
+        <input type="text" id="lng" value="63.0000">
+        <button onclick="setInitialCoordinates()">Set Coordinates</button>
+    </div>
     <canvas id="canvas"></canvas>
     <div class="matrix-container">
         <h4>Начальная матрица координат:</h4>
@@ -64,13 +71,6 @@
         <div id="final-matrix" class="matrix"></div>
     </div>
     <img src="nurismap.png" class="photo" alt="Photo">
-    <div class="input-container">
-        <label for="lat">Latitude: </label>
-        <input type="text" id="lat" value="52.0000">
-        <label for="lng">Longitude: </label>
-        <input type="text" id="lng" value="63.0000">
-        <button onclick="setInitialCoordinates()">Set Coordinates</button>
-    </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3gzo6yiL6osEkR-GDDA3DjA9D7qKqI4o&callback=initMap&libraries=drawing,geometry" async defer></script>
     <script>
         let map;
