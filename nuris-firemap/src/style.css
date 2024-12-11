@@ -1,0 +1,117 @@
+#map {
+    height: 100vh;
+    width: 100%;
+}
+#canvas {
+    position: absolute;
+    top: 150px; /* Переместить ниже, чем Set Coordinates */
+    left: 10px; /* Смещение от левого края */
+    z-index: 1000;
+    width: 30%;
+    height: 30%;
+    background-color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+.matrix-container {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 150px;
+    overflow-y: auto;
+}
+.matrix {
+    font-family: monospace;
+    white-space: pre;
+    font-size: 10px;
+}
+.photo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1100;
+    width: 250px;
+    height: 25px;
+}
+.input-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1100;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: white;
+    width: 19%;
+    height: 30%;
+    border: 2px solid #ccc; /* optional border for better visualization */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1100;
+    border-radius: 5px;
+  }
+  
+  .arrow-wrapper {
+    position: absolute;
+    text-align: center;
+    transform-origin: center;
+  }
+  
+  .arrow {
+    width: 10px; /* Width of the arrow */
+    background-color: #000;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform-origin: bottom center;
+  }
+  
+  .arrow-text {
+    margin-top: 10px;
+    font-size: 14px;
+    position: absolute;
+    bottom: -25px; /* Position the text below the arrow */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the text horizontally */
+  }
+  
+  .arrow-label {
+    font-size: 12px;
+    color: #555;
+  }
+  
+.leaflet-control {
+    display: none;
+}
+
+.progress-bar-container {
+    position: absolute;
+    z-index: 1100;
+    bottom: 10px;
+        width: 90%; /* Width of the progress bar */
+        height: 20px; /* Height of the progress bar */
+        background-color: #f0f0f0; /* Background of the container */
+        margin: 20px auto; /* Center horizontally */
+        border-radius: 5px; /* Rounded corners */
+        overflow: hidden; /* Prevent the bar from overflowing */
+      }
+      
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #00008b, #87ceeb); /* Dark blue to sky blue gradient */
+        transition: width 0.7s ease; /* Smooth transition of width */
+      }
+      
+      
